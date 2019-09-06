@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-KSCRIPT_HOME="$(pwd)"
+KSCRIPT_HOME="/kscript"
+[ ! -d "$KSCRIPT_HOME" ] && mkdir "$KSCRIPT_HOME"
+cp -r * .* $KSCRIPT_HOME/
 
 
 ########################################################################################################################
