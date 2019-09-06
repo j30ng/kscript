@@ -30,6 +30,7 @@ fun evalBash(cmd: String, wd: File? = null,
 
 fun runProcess(cmd: String, wd: File? = null): ProcessResult {
     val parts = cmd.split("\\s".toRegex())
+    println(1)
     return runProcess(cmd = *parts.toTypedArray(), wd = wd)
 }
 
