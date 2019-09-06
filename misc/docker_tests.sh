@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-KSCRIPT_HOME="/kscript"
+KSCRIPT_HOME="$HOME/kscript"
 [ ! -d "$KSCRIPT_HOME" ] && mkdir "$KSCRIPT_HOME"
 cp -r * .* $KSCRIPT_HOME/
 
@@ -34,16 +34,16 @@ docker push holgerbrandl/kscript_tester
 cd ${KSCRIPT_HOME}
 
 
-docker run -it --rm -v $(pwd)/kscript_docker:/kscript kscript_tester
-docker run -it --rm -v $(pwd)/kscript_docker:/kscript a9945a6a860d
+docker run -it --rm -v $(pwd)/kscript_docker:$KSCRIPT_HOME kscript_tester
+docker run -it --rm -v $(pwd)/kscript_docker:$KSCRIPT_HOME a9945a6a860d
 
 ## with slash escaped for windows
 #docker run -it --rm -v d:/projects/misc/kscript://kscript kscript_tester
 #docker run -it -v ${pwd}:/kscript kscript_tester
 
 ## path path tp allow env usage within container
-export PATH=/kscript/build/libs:$PATH
-export KSCRIPT_HOME=/kscript
+export PATH=$KSCRIPT_HOME/build/libs:$PATH
+export KSCRIPT_HOME=$KSCRIPT_HOME
 
 
 # https://stackoverflow.com/questions/28302178/how-can-i-add-a-volume-to-an-existing-docker-container
